@@ -61,9 +61,22 @@ Sampaikan dalam format:
 - Jangan eksekusi request authenticated ke situs pihak ketiga pakai kredensial user tanpa izin eksplisit
 - Kalau target butuh browser (render client-side, anti-bot), sarankan pendekatan DevTools / headless browser dan minta user ambil data dari sana
 
-## Tools yang disarankan
+## Tools
+
+### Python (otomatis) — `tools/unpack_web.py`
+
+Script jadi untuk langkah 1–3. Install & jalankan:
+
+```bash
+pip install requests beautifulsoup4 jsbeautifier
+python tools/unpack_web.py https://contoh.com --out laporan.md
+```
+
+Outputnya berupa kerangka laporan Markdown: framework, daftar bundle, tabel endpoint, mekanisme auth. Tinggal dilengkapi analisis manual (langkah 4–5).
+
+### Manual / tambahan
 
 - `curl` / `fetch` untuk HTML & asset statis
-- Prettier / js-beautify untuk unminify
+- Prettier / js-beautify untuk unminify (sudah terintegrasi di script)
 - DevTools browser untuk network log kalau fetch mentah tidak cukup
 - Untuk WASM atau bundle yang berat, catat keterbatasan dan minta file dari user
