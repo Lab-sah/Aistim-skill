@@ -25,18 +25,20 @@ except ImportError:
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
                     "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"}
 
+QUOTE = r"[\x22\x27]"  # karakter " atau ' tanpa quote literal di source
+
 EP_PATTERNS = [
-    r"""["'`]((?:https?://[^"'`\s]+)?/api/[^"'`\s]+)["'`]""",
-    r"""["'`]((?:https?://[^"'`\s]+)?/v\d+/[^"'`\s]+)["'`]""",
-    r"""fetch\(\s*["'`]([^"'`]+)["'`]""",
-    r"""(?:axios\.(?:get|post|put|delete)|\.get|\.post)\(\s*["'`]([^"'`]+)["'`]""",
-    r"""["'`]([^"'`\s]*graphql[^"'`\s]*)["'`]""",
+    QUOTE + r"((?:https?://[^\x22\x27\s]+)?/api/[^\x22\x27\s]+)" + QUOTE,
+    QUOTE + r"((?:https?://[^\x22\x27\s]+)?/v\d+/[^\x22\x27\s]+)" + QUOTE,
+    r"fetch\(\s*" + QUOTE + r"([^\x22\x27]+)" + QUOTE,
+    r"(?:axios\.(?:get|post|put|delete))(\s*)" + QUOTE + r"([^\x22\x27]+)" + QUOTE,
+    QUOTE + r"([^\x22\x27\s]*graphql[^\x22\x27\s]*)" + QUOTE,
 ]
 AUTH_PATTERNS = [
-    (r"localStorage\.(?:getItem|setItem)\(['\"](\w*(?:token|apikey|api_key|auth)\w*)['\"]", "localStorage"),
-    (r"sessionStorage\.(?:getItem|setItem)\(['\"](\w*(?:token|apikey|api_key|auth)\w*)['\"]", "sessionStorage"),
-    (r"headers\[["'](?:Authorization|X-API-Key|X-CSRF[^"']*)["']\]", "custom header"),
-    (r"Cookie|document\.cookie", "cookie"),
+    (r"localStorage\.(?:getItem|setItem)\(" + QUOTE + r"(\w*(?:token|apikey|api_key|auth)\w*)" + QUOTE, "localStorage"),
+    (r"sessionStorage\.(?:getItem|setItem)\(" + QUOTE + r"(\w*(?:token|apikey|api_key|auth)\w*)" + QUOTE, "sessionStorage"),
+    (r"headers\s*\[\s*" + QUOTE + r"(?:Authorization|X-API-Key|X-CSRF[^\x22\x27]*)" + QUOTE + r"\s*\]", "custom header"),
+    (r"document\.cookie", "cookie"),
 ]
 FRAMEWORK_SIGNS = [
     ("__NEXT_DATA__", "Next.js"), ("__NUXT__", "Nuxt"), ("data-reactroot", "React (legacy)"),
@@ -71,12 +73,14 @@ def scan_js(js):
     eps = set()
     for pat in EP_PATTERNS:
         for m in re.findall(pat, js):
+            if isinstance(m, tuple):
+                m = m[-1]
             eps.add(m)
     auth = []
     for pat, label in AUTH_PATTERNS:
-        if re.search(pat, js, re.I):
-            keys = re.findall(pat, js, re.I)[:5]
-            auth.append((label, sorted(set(keys)) if keys and keys[0] else []))
+        ms = re.findall(pat, js, re.I)
+        if ms:
+            auth.append((label, sorted(set(k for k in ms if k))[:5]))
     return sorted(eps), auth
 
 
@@ -119,7 +123,8 @@ def unpack(url, max_js=10, max_size=2_000_000):
 
     lines += ["## Endpoint API", ""]
     if all_eps:
-        lines.append("| Endpoint | Catatan |"); lines.append("|---|---|")
+        lines.append("| Endpoint | Catatan |")
+        lines.append("|---|---|")
         for e in sorted(all_eps):
             lines.append(f"| `{e}` | |")
     else:
