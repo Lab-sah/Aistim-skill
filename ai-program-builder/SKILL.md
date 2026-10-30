@@ -13,7 +13,7 @@ Ikuti alur kerja berikut setiap kali membantu pengguna membuat program/aplikasi.
    - Jika user belum menyebut framework dan aplikasinya lebih dari skrip kecil, framework wajib masuk salah satu dari pertanyaan kunci.
    - Jika user tidak tahu, sarankan satu pilihan umum sesuai platform (misalnya web, mobile, atau desktop), lalu nyatakan sebagai asumsi. Kode baru dibuat setelah user menyetujui pilihan itu.
 3. Jika spesifikasi pengguna sudah lengkap, lewati pertanyaan dan langsung susun rencana.
-4. Susun rencana singkat: struktur file/arsitektur, urutan pengerjaan.
+4. Susun rencana singkat: struktur file/arsitektur, urutan pengerjaan, dan keputusan data dan autentikasi (database yang dipakai, perlu login atau tidak, serta API eksternal yang dibutuhkan).
 5. Tentukan struktur folder:
    - Satu folder per modul atau fitur; file konfigurasi di root.
    - Gunakan huruf kecil dan tanda hubung untuk nama folder, dan ikuti konvensi bahasa atau framework yang disebut user.
@@ -34,6 +34,7 @@ Ikuti alur kerja berikut setiap kali membantu pengguna membuat program/aplikasi.
 - Sebutkan versi library dan runtime yang dipakai, lalu pastikan sesuai dengan yang disebut pengguna.
 - Sertakan penanganan error (error handling) pada bagian yang berinteraksi dengan input user atau jaringan.
 - Jangan mengarang nama fungsi/API. Jika tidak yakin, nyatakan asumsi secara eksplisit.
+- Gunakan git sejak awal: inisialisasi repo, buat commit per sub-fase dengan pesan yang jelas, dan pakai branch untuk fitur besar. Pastikan `.env` masuk ke `.gitignore`.
 
 ## Fase 4 — Evaluasi (wajib sebelum jawab)
 Checklist sebelum menyerahkan kode:
@@ -42,6 +43,7 @@ Checklist sebelum menyerahkan kode:
 - Dependency dan versi sudah cocok dengan environment yang disebut pengguna?
 - Kode bisa dijalankan apa adanya (tanpa bagian "TODO")?
 - Sudah ada contoh cara pakai/pengujian singkat?
+- Sudah ada tes otomatis untuk logika inti dan kasus edge, dan tes itu lulus?
 
 ## Fase 5 — Debugging (jika pengguna melaporkan error)
 1. Minta laporan yang lengkap: pesan error lengkap (stack trace), kode terkait, apa yang sudah dicoba, dan hasilnya.
@@ -53,11 +55,14 @@ Checklist sebelum menyerahkan kode:
 - Ringkas: sebutkan file apa saja yang dibuat/diubah dan cara menjalankannya.
 - Sebutkan asumsi yang dibuat dan bagian yang belum diuji, sesuai Fase 3.
 - Ingatkan pengguna untuk menguji di environment nyata (device nyata untuk aplikasi mobile), bukan hanya emulator/simulasi.
+- Buat README berisi cara instal, konfigurasi, dan menjalankan aplikasi, lengkap dengan prasyarat.
+- Versi dan rilis: gunakan semantic versioning (MAJOR.MINOR.PATCH). Catat perubahan di `CHANGELOG.md` dari sudut pandang user. Tandai rilis dengan git tag (misalnya `v1.2.0`) hanya setelah checklist Fase 4 lulus, dan pastikan versi di kode sama dengan tag.
 
 ## Fase 7 — Deploy
 - Jangan deploy sebelum checklist Fase 4 lulus dan pengguna sudah menguji di environment nyata.
 - Konfirmasi dulu target hosting dan cara deploy yang dipakai pengguna. Jangan mengasumsikan platform tertentu.
 - Simpan secret (API key, password, token) di environment variable atau secret manager, jangan di kode atau di repo.
+- Sertakan `.env.example` yang berisi nama variabel environment beserta penjelasannya, tanpa nilai rahasia, supaya user tahu apa yang harus diisi.
 - Pastikan build production berjalan lokal sebelum dikirim ke hosting.
 - Setelah deploy, cek halaman utama, fitur inti, dan log error di hosting.
 - Sebutkan langkah rollback jika deploy bermasalah.
