@@ -9,6 +9,7 @@ Koleksi skill untuk AI — dimuat otomatis oleh agent yang kompatibel (format `S
 | [unpack-web](unpack-skill/SKILL.md) | Bongkar struktur website: HTML, JS bundle, endpoint API, flow data. Contoh output lihat [contoh-laporan.md](unpack-skill/examples/contoh-laporan.md) |
 | [skill-token](skill-token/SKILL.md) | Panduan menghemat token dan energi saat bekerja dengan Claude: prompt, pemilihan model, pembacaan file, dan tool |
 | [vscode-model-setup](vscode-model-setup/SKILL.md) | Panduan memakai model Claude dan OpenAI di VS Code Copilot Chat dengan BYOK serta memahami harness Codex |
+| [ai-program-builder](ai-program-builder/SKILL.md) | Panduan terstruktur membuat program/aplikasi dengan bantuan AI: analisis kebutuhan, prompt RACE, evaluasi kode, debugging, sampai penyerahan |
 
 ## Cara pakai
 
@@ -30,4 +31,7 @@ skill-token/
 
 vscode-model-setup/
 └── SKILL.md                  # panduan model Claude/OpenAI di VS Code
+
+ai-program-builder/
+└── SKILL.md                  # panduan membuat program dengan bantuan AI
 ```
