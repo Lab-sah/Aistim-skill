@@ -10,6 +10,8 @@ Ikuti alur kerja berikut setiap kali membantu pengguna membuat program/aplikasi.
 ## Fase 1 — Analisis & Rencana
 1. Klarifikasi kebutuhan: fungsi utama, platform (web/mobile/desktop), tech stack, constraint.
 2. Jika kebutuhan ambigu, TANYA dulu sebelum coding. Maksimal 3 pertanyaan kunci.
+   - Jika user belum menyebut framework dan aplikasinya lebih dari skrip kecil, framework wajib masuk salah satu dari pertanyaan kunci.
+   - Jika user tidak tahu, sarankan satu pilihan umum sesuai platform (misalnya web, mobile, atau desktop), lalu nyatakan sebagai asumsi. Kode baru dibuat setelah user menyetujui pilihan itu.
 3. Jika spesifikasi pengguna sudah lengkap, lewati pertanyaan dan langsung susun rencana.
 4. Susun rencana singkat: struktur file/arsitektur, urutan pengerjaan.
 5. Tentukan struktur folder:
