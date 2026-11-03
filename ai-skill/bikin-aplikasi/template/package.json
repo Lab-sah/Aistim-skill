@@ -1,0 +1,18 @@
+{
+  "name": "aplikasi-contoh",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Aplikasi web statis: monitoring error, tes otomatis, dan deploy ke GitHub Pages",
+  "scripts": {
+    "cek": "npm run cek:struktur && npm run cek:keamanan && npm run cek:versi",
+    "cek:struktur": "node scripts/cek-struktur.mjs",
+    "cek:keamanan": "node scripts/cek-keamanan.mjs",
+    "cek:versi": "node scripts/cek-versi.mjs",
+    "build:config": "node scripts/buat-config.mjs",
+    "tes": "node scripts/tes-browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.49.1"
+  }
+}
