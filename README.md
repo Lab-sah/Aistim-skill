@@ -35,3 +35,5 @@ vscode-model-setup/
 ai-program-builder/
 └── SKILL.md                  # panduan membuat program dengan bantuan AI
 ```
+
+<!-- Uji alur auto-PR dan auto-merge -->
