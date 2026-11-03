@@ -1,0 +1,25 @@
+:root {
+  --bg: #0b1020; --kartu: #131a2e; --garis: #26314f; --teks: #e8ecf7;
+  --muted: #8b96b5; --aksen: #3ddc97; --merah: #ff6b6b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 15px/1.5 system-ui, sans-serif; background: var(--bg); color: var(--teks); }
+header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--garis); flex-wrap: wrap; gap: 8px; }
+header h1 { font-size: 17px; margin: 0; }
+nav a { color: var(--muted); margin-left: 12px; text-decoration: none; font-size: 13px; }
+nav a.aktif { color: var(--aksen); }
+main { max-width: 640px; margin: 0 auto; padding: 16px; }
+.kartu { background: var(--kartu); border: 1px solid var(--garis); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.baris { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+form { display: flex; gap: 8px; }
+input { flex: 1; min-width: 0; background: var(--bg); color: var(--teks); border: 1px solid var(--garis); border-radius: 8px; padding: 10px; font: inherit; }
+button { background: var(--aksen); color: #06210f; border: 0; border-radius: 8px; padding: 10px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+button.hapus { background: transparent; color: var(--merah); border: 1px solid var(--garis); padding: 6px 10px; font-weight: 500; }
+ul { padding: 0; margin: 0; }
+li { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--garis); }
+li.blok { display: block; }
+.muted { color: var(--muted); font-size: 13px; }
+pre { white-space: pre-wrap; word-break: break-word; font-size: 12px; color: var(--muted); margin: 0; }
+.lulus { color: var(--aksen); }
+.gagal { color: var(--merah); }
+[hidden] { display: none !important; }
