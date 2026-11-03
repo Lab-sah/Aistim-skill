@@ -1,4 +1,5 @@
 # Auto PR: buat PR ke main dan aktifkan auto-merge (squash) setelah push ke branch ccr-**.
+# Auto-merge butuh "Allow auto-merge" aktif di Settings repo.
 name: Auto PR
 
 on:
