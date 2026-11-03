@@ -63,13 +63,13 @@ Sampaikan dalam format:
 
 ## Tools
 
-### Python (otomatis) — `tools/unpack_web.py`
+### Python (otomatis) — `scripts/unpack_web.py`
 
 Script jadi untuk langkah 1–3. Install & jalankan:
 
 ```bash
 pip install requests beautifulsoup4 jsbeautifier
-python tools/unpack_web.py https://contoh.com --out laporan.md
+python scripts/unpack_web.py https://contoh.com --out laporan.md
 ```
 
 Outputnya berupa kerangka laporan Markdown: framework, daftar bundle, tabel endpoint, mekanisme auth. Tinggal dilengkapi analisis manual (langkah 4–5).
