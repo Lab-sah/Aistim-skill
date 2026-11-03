@@ -1,3 +1,4 @@
+# Auto PR: buat PR ke main dan aktifkan auto-merge (squash) setelah push ke branch ccr-**.
 name: Auto PR
 
 on:
