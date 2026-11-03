@@ -23,7 +23,7 @@ unpack-skill/
 ├── SKILL.md                  # definisi skill unpack-web
 ├── examples/
 │   └── contoh-laporan.md     # contoh output laporan analisis
-└── tools/
+└── scripts/
     └── unpack_web.py         # script otomatis langkah 1–3
 
 skill-token/
