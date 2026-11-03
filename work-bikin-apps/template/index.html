@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP: hanya file dari domain sendiri. Tidak ada inline script/style. Jika menambah CDN, ubah di sini dan jalankan `npm run cek`. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://discord.com https://hooks.slack.com https://api.telegram.org; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Aplikasi Contoh</title>
+<meta name="theme-color" content="#0b1020">
+<link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+<header>
+  <h1>Aplikasi Contoh</h1>
+  <nav>
+    <a href="#catatan" data-tab="catatan" class="aktif">Catatan</a>
+    <a href="#log" data-tab="log">Log</a>
+  </nav>
+</header>
+
+<main>
+  <section id="tab-catatan">
+    <div class="kartu">
+      <form id="form-catatan">
+        <input id="input-catatan" placeholder="Tulis catatan..." maxlength="200" required>
+        <button type="submit">Simpan</button>
+      </form>
+    </div>
+    <div class="kartu"><ul id="daftar-catatan"></ul><p id="kosong" class="muted" hidden>Belum ada catatan.</p></div>
+  </section>
+
+  <section id="tab-log" hidden>
+    <div class="kartu">
+      <div class="baris">
+        <strong>Log error</strong>
+        <button class="hapus" id="bersihkan-log">Bersihkan</button>
+      </div>
+      <ul id="daftar-log"></ul>
+      <p id="log-kosong" class="muted" hidden>Belum ada error. Bagus.</p>
+    </div>
+  </section>
+
+  <section id="tab-tes" hidden>
+    <div class="kartu"><strong>Hasil tes</strong><ul id="daftar-tes"></ul></div>
+  </section>
+</main>
+
+<!-- Urutan penting: config dulu, lalu modul, lalu app. -->
+<script src="src/js/config.js"></script>
+<script src="src/js/db.js"></script>
+<script src="src/js/monitoring.js"></script>
+<script src="src/js/ui.js"></script>
+<script src="src/js/tes.js"></script>
+<script src="src/js/app.js"></script>
+</body>
+</html>
