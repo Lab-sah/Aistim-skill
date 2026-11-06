@@ -10,6 +10,7 @@ Koleksi skill untuk AI — dimuat otomatis oleh agent yang kompatibel (format `S
 | [skill-token](skill-token/SKILL.md) | Panduan menghemat token dan energi saat bekerja dengan Claude: prompt, pemilihan model, pembacaan file, dan tool |
 | [vscode-model-setup](vscode-model-setup/SKILL.md) | Panduan memakai model Claude dan OpenAI di VS Code Copilot Chat dengan BYOK serta memahami harness Codex |
 | [ai-program-builder](ai-program-builder/SKILL.md) | Panduan terstruktur membuat program/aplikasi dengan bantuan AI: analisis kebutuhan, prompt RACE, evaluasi kode, debugging, sampai penyerahan |
+| [webstore-audit](webstore-audit/SKILL.md) | Audit dan standarisasi extension Chrome terhadap kebijakan Chrome Web Store dan Manifest V3 sebelum dipublikasikan |
 
 ## Cara pakai
 
@@ -34,6 +35,9 @@ vscode-model-setup/
 
 ai-program-builder/
 └── SKILL.md                  # panduan membuat program dengan bantuan AI
+
+webstore-audit/
+└── SKILL.md                  # audit extension Chrome untuk Chrome Web Store
 ```
 
 <!-- Uji alur auto-PR dan auto-merge -->
